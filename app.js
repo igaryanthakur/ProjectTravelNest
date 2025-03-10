@@ -1,10 +1,14 @@
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-const Mongo_Url = "mongodb://localhost:27017/wanderlust";
+const Mongo_Url = "mongodb://localhost:27017/travelnest";
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const flash = require("connect-flash");
@@ -66,7 +70,6 @@ app.use((req, res, next) => {
   res.locals.currUser = req.user;
   next();
 });
-
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
