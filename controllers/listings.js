@@ -1,7 +1,7 @@
 const Listing = require("../models/listings");
-const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
-const mapToken = process.env.MAPBOX_TOKEN;
-const geocodingClient = mbxGeocoding({ accessToken: mapToken });
+require("dotenv").config();
+const { geocodingClient } = require("../cloudConfig");
+const { cloudinary } = require("../cloudConfig");
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
@@ -62,14 +62,35 @@ module.exports.renderEditForm = async (req, res) => {
 };
 
 module.exports.updateListing = async (req, res) => {
+  let response = await geocodingClient
+    .forwardGeocode({
+      query: req.body.listing.location,
+      limit: 1,
+    })
+    .send();
+
   let { id } = req.params;
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  listing.geometry = response.body.features[0].geometry;
+
   if (typeof req.file != "undefined") {
+    if (listing.image && listing.image.filename) {
+      try {
+        await cloudinary.uploader.destroy(listing.image.filename);
+        console.log(
+        );
+      } catch (err) {
+        console.error(
+          `❌ Failed to delete old image: ${listing.image.filename}`,
+          err.message
+        );
+      }
+    }
     let url = req.file.path;
     let filename = req.file.filename;
     listing.image = { url, filename };
-    await listing.save();
   }
+  await listing.save();
   req.flash("success", "Successfully updated the listing!");
   res.redirect(`/listings/${id}`);
 };
@@ -77,7 +98,17 @@ module.exports.updateListing = async (req, res) => {
 module.exports.destroyListing = async (req, res) => {
   let { id } = req.params;
   let deletedListing = await Listing.findByIdAndDelete(id);
-  console.log(deletedListing);
+  if (deletedListing) {
+    try {
+      // Delete the image from Cloudinary using the public_id (filename)
+      await cloudinary.uploader.destroy(deletedListing.image.filename);
+      console.log(
+      );
+    } catch (err) {
+      console.error("❌ Error deleting image from Cloudinary:", err.message);
+    }
+  }
+  await Listing.findByIdAndDelete(id);
   req.flash("success", "Successfully deleted the listing!");
   res.redirect("/listings");
 };
