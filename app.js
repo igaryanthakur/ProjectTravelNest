@@ -8,9 +8,12 @@ const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-const Mongo_Url = "mongodb://localhost:27017/travelnest";
+
+const dbUrl = process.env.ATLASDB_URL;
+
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -29,7 +32,7 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(Mongo_Url);
+  await mongoose.connect(dbUrl);
 }
 
 app.set("view engine", "ejs");
@@ -39,8 +42,21 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  touchAfter: 24 * 3600,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+});
+
+store.on("error", (e) => {
+  console.log("Session Store Error", e);
+});
+
 const sessionOptions = {
-  secret: "mysupersecretcode",
+  store,
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
