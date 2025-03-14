@@ -1,7 +1,6 @@
 const Listing = require("../models/listings");
 require("dotenv").config();
-const { geocodingClient } = require("../cloudConfig");
-const { cloudinary } = require("../cloudConfig");
+const { geocodingClient, cloudinary } = require("../cloudConfig");
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
@@ -77,8 +76,7 @@ module.exports.updateListing = async (req, res) => {
     if (listing.image && listing.image.filename) {
       try {
         await cloudinary.uploader.destroy(listing.image.filename);
-        console.log(
-        );
+        console.log();
       } catch (err) {
         console.error(
           `❌ Failed to delete old image: ${listing.image.filename}`,
@@ -102,8 +100,7 @@ module.exports.destroyListing = async (req, res) => {
     try {
       // Delete the image from Cloudinary using the public_id (filename)
       await cloudinary.uploader.destroy(deletedListing.image.filename);
-      console.log(
-      );
+      console.log();
     } catch (err) {
       console.error("❌ Error deleting image from Cloudinary:", err.message);
     }

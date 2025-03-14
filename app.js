@@ -66,9 +66,10 @@ const sessionOptions = {
   },
 };
 
-// app.get("/", (req, res) => {
-//   res.send("Hi i am root");
-// });
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "listings", "root.html"));
+});
+
 
 app.use(session(sessionOptions));
 app.use(flash());
