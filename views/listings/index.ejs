@@ -1,11 +1,63 @@
 <% layout("/layouts/boilerplate") %>
-<h3>All Listings</h3>
- <!-- <div id="filters">
+<!-- <h3>All Listings</h3> -->
+
+<style>
+  #filters {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .filter{
+    text-align: center;
+    font-size: 0.8rem;
+    margin: 2rem 0px;
+    margin-right: 2rem;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  .filter:hover{
+    opacity: 1;
+  }
+</style>
+
+<div id="filters">
   <div class="filter">
-    <i class="fa-solid fa-fire"></i>
+    <div><i class="fa-solid fa-fire"></i></div>
     Trending
   </div>
- </div> -->
+  <div class="filter">
+    <div><i class="fa-solid fa-mountain"></i></div>
+    Hill-Station
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-plane-arrival"></i></div>
+    Iconic-City
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-person-swimming"></i></div>
+    Amazing-Pool
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-cow"></i></div>
+    Farmhouse
+  </div>
+  <div class="filter">
+    <div><i class="fa-brands fa-fort-awesome"></i></div>
+    Mansion
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-face-surprise"></i></div>
+    OMG!
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-umbrella-beach"></i></div>
+    Beach-Front
+  </div>
+  <div class="filter">
+    <div><i class="fa-solid fa-snowflake"></i></div>
+    Artic
+  </div>
+</div>
+
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
   <% for (let listing of allListings) { %>
   <a href="/listings/<%= listing._id%>" class="listing-link">

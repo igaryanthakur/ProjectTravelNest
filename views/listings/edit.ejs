@@ -34,9 +34,36 @@
         >
         <div class="invalid-feedback">Please Enter A Short Description.</div>
       </div>
+
+      <div class="mb-3">
+        <label for="category">Choose a suitable category:</label>
+        <select
+          name="listing[category]"
+          id="category"
+          class="form-select form-select-md"
+          required
+        >
+          <option value="General" <%= listing.category === "General" ?
+          "selected='selected'" : "" %>>General <option value="Hill-Station" <%=
+          listing.category === "Hill-Station" ? "selected='selected'" : ""
+          %>>Hill-Station <option value="Iconic-City" <%= listing.category ===
+          "Iconic-City" ? "selected='selected'" : "" %>>Iconic-City <option
+          value="Amazing-Pool" <%= listing.category === "Amazing-Pool" ?
+          "selected='selected'" : "" %>>Amazing-Pool <option value="Farmhouse"
+          <%= listing.category === "Farmhouse" ? "selected='selected'" : ""
+          %>>Farmhouse <option value="Mansion" <%= listing.category ===
+          "Mansion" ? "selected='selected'" : "" %>>Mansion <option value="OMG!"
+          <%= listing.category === "OMG!" ? "selected='selected'" : "" %>>OMG!
+          <option value="Beach-Front" <%= listing.category === "Beach-Front" ?
+          "selected='selected'" : "" %>>Beach-Front <option value="Arctic" <%=
+          listing.category === "Arctic" ? "selected='selected'" : "" %>>Arctic
+        </select>
+        <div class="invalid-feedback">Please select a category.</div>
+      </div>
+
       <div class="mb-3">
         Orignal Image <br />
-        <img id="htwd" src="<%= originalImageUrl %>" alt="">
+        <img id="htwd" src="<%= originalImageUrl %>" alt="" />
       </div>
       <div class="mb-3">
         <label for="image" class="form-label">Upload Image</label>

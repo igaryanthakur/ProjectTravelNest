@@ -34,11 +34,15 @@ module.exports.createListing = async (req, res) => {
     })
     .send();
 
-  let url = req.file.path;
-  let filename = req.file.filename;
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
-  newListing.image = { url, filename };
+  if (!req.file) {
+    newListing.image = { url:"https://res.cloudinary.com/des0a45hb/image/upload/v1742018850/travelnest/oqyglzdw5tlqrdiy1hbe.jpg", filename:"travelnest/oqyglzdw5tlqrdiy1hbe.jpg" };
+  } else {
+    let url = req.file.path;
+    let filename = req.file.filename;
+    newListing.image = { url, filename };
+  }
   newListing.geometry = response.body.features[0].geometry;
   await newListing.save();
   req.flash("success", "Successfully created a new listing!");
