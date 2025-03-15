@@ -22,6 +22,7 @@ const User = require("./models/user.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const pagesRouter = require("./routes/extras.js");
 
 main()
   .then(() => {
@@ -70,7 +71,6 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "listings", "root.html"));
 });
 
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -91,6 +91,7 @@ app.use((req, res, next) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+app.use("/", pagesRouter);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));

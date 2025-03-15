@@ -86,15 +86,21 @@ async function migrateImages() {
       listing.image.filename = cloudinaryResult.public_id;
       await listing.save();
 
-      console.log(`✅ Updated MongoDB for ${imageUrl} -> ${cloudinaryResult.secure_url}`);
+      console.log(
+        `✅ Updated MongoDB for ${imageUrl} -> ${cloudinaryResult.secure_url}`
+      );
 
       // Delete the temporary file
       fs.unlink(downloadedImage, (err) => {
-        if (err) console.error("❌ Error deleting file:", downloadedImage, err.message);
+        if (err)
+          console.error(
+            "❌ Error deleting file:",
+            downloadedImage,
+            err.message
+          );
         else console.log(`🗑️ Deleted temporary file: ${downloadedImage}`);
       });
     }
-
   } catch (err) {
     console.error("❌ Error during image migration:", err.message);
   } finally {

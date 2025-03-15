@@ -26,6 +26,18 @@ module.exports.showListing = async (req, res) => {
   res.render("listings/show.ejs", { listing });
 };
 
+module.exports.searchListings = async (req, res) => {
+  const { country } = req.query;
+  const searchedListings = await Listing.find({ country });
+
+  if (searchedListings.length === 0) {
+    req.flash("error", "No stays available in the searched country");
+    return res.redirect("/listings");
+  }
+
+  res.render("listings/index.ejs", { allListings: searchedListings });
+};
+
 module.exports.filteredListings = async (req, res) => {
   const { category } = req.params;
   const filteredListings = await Listing.find({ category });
@@ -42,13 +54,9 @@ module.exports.createListing = async (req, res) => {
 
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
-  if (!req.file) {
-    newListing.image = { url:"https://res.cloudinary.com/des0a45hb/image/upload/v1742018850/travelnest/oqyglzdw5tlqrdiy1hbe.jpg", filename:"travelnest/oqyglzdw5tlqrdiy1hbe.jpg" };
-  } else {
-    let url = req.file.path;
-    let filename = req.file.filename;
-    newListing.image = { url, filename };
-  }
+  let url = req.file.path;
+  let filename = req.file.filename;
+  newListing.image = { url, filename };
   newListing.geometry = response.body.features[0].geometry;
   await newListing.save();
   req.flash("success", "Successfully created a new listing!");

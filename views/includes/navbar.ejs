@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"
-      ><i class="fa-regular fa-compass"></i
-    ></a>
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-regular fa-compass"></i>
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -15,6 +15,46 @@
       <div class="navbar-nav">
         <a class="nav-link" href="/listings">Explore</a>
       </div>
+
+      <div class="navbar-nav ms-auto" id="navbarNavAltMarkup">
+        <form
+          action="/listings/search"
+          class="d-flex"
+          role="search"
+          method="GET"
+        >
+          <select
+            name="country"
+            id="country"
+            class="form-control me-2 search-inp"
+            role="search"
+          >
+            <option value="" disabled selected>Choose Country</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Thailand">Thailand</option>
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Fiji">Fiji</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Tanzania">Tanzania</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Italy">Italy</option>
+            <option value="Monaco">Monaco</option>
+            <option value="India">India</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Maldives">Maldives</option>
+            <option value="Japan">Japan</option>
+            <option value="Greece">Greece</option>
+          </select>
+          <button class="btn search-btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
+        </form>
+      </div>
+
       <div class="navbar-nav ms-auto">
         <a class="nav-link" href="/listings/new">Airbnb your home</a>
         <% if(!currUser) { %>

@@ -169,3 +169,28 @@ body {
 .tax-toggle:hover {
   opacity: 0.9;
 }
+
+/* SearchBar */
+.search-btn {
+  background-color: #fe424d !important;
+  color: white !important;
+  border-radius: 25px !important;
+  padding: 0px 1rem;
+}
+
+.search-btn:hover {
+  background-color: #ff5a64 !important;
+}
+
+.search-btn i {
+  display: inline;
+  margin-right: 0.5rem;
+}
+
+.search-inp {
+  border-radius: 25px !important;
+  padding: 0.5rem 2rem 0.5rem 3rem !important;
+  font-size: 1rem !important;
+  text-align: center !important;
+  cursor: pointer;
+}

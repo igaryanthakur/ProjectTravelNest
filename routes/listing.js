@@ -20,15 +20,16 @@ router
     wrapAsync(listingController.createListing)
   );
 
+// Search Route
+router.get("/search", wrapAsync(listingController.searchListings));
+
+// Filtered Listings Route
+router.get("/filter/:category", wrapAsync(listingController.filteredListings));
+
 // New Route
 router.route("/new").get(isLoggedIn, listingController.renderNewForm);
 
-// Filtered Listings Route
-router.get(
-  "/filter/:category",
-  wrapAsync(listingController.filteredListings)
-);
-
+// Show Route
 router
   .route("/:id")
   .get(wrapAsync(listingController.showListing))
@@ -40,9 +41,6 @@ router
     wrapAsync(listingController.updateListing)
   )
   .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
-
-// Show Route
-router.get("/:id", wrapAsync(listingController.showListing));
 
 // Edit Route
 router.get(
