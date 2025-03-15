@@ -23,6 +23,12 @@ router
 // New Route
 router.route("/new").get(isLoggedIn, listingController.renderNewForm);
 
+// Filtered Listings Route
+router.get(
+  "/filter/:category",
+  wrapAsync(listingController.filteredListings)
+);
+
 router
   .route("/:id")
   .get(wrapAsync(listingController.showListing))

@@ -26,6 +26,12 @@ module.exports.showListing = async (req, res) => {
   res.render("listings/show.ejs", { listing });
 };
 
+module.exports.filteredListings = async (req, res) => {
+  const { category } = req.params;
+  const filteredListings = await Listing.find({ category });
+  res.render("listings/index.ejs", { allListings: filteredListings });
+};
+
 module.exports.createListing = async (req, res) => {
   let response = await geocodingClient
     .forwardGeocode({

@@ -2,11 +2,11 @@
 <!-- <h3>All Listings</h3> -->
 
 <style>
-  #filters {
+  .filter-icons {
     display: flex;
     flex-wrap: wrap;
   }
-  .filter{
+  .filter {
     text-align: center;
     font-size: 0.8rem;
     margin: 2rem 0px;
@@ -14,47 +14,69 @@
     opacity: 0.7;
     cursor: pointer;
   }
-  .filter:hover{
+  .filter:hover {
     opacity: 1;
+  }
+  a{
+    text-decoration: none;
+    color: black;
   }
 </style>
 
-<div id="filters">
+<div class="filter-icons">
   <div class="filter">
-    <div><i class="fa-solid fa-fire"></i></div>
-    Trending
+    <a href="/listings/filter/General">
+      <div><i class="fa-solid fa-house"></i></div>
+      General
+    </a>
   </div>
   <div class="filter">
-    <div><i class="fa-solid fa-mountain"></i></div>
-    Hill-Station
+    <a href="/listings/filter/Hill-Station">
+      <div><i class="fa-solid fa-mountain"></i></div>
+      Hill-Station
+    </a>
   </div>
   <div class="filter">
-    <div><i class="fa-solid fa-plane-arrival"></i></div>
-    Iconic-City
+    <a href="/listings/filter/Iconic-City">
+      <div><i class="fa-solid fa-city"></i></div>
+      Iconic-City
+    </a>
   </div>
   <div class="filter">
-    <div><i class="fa-solid fa-person-swimming"></i></div>
-    Amazing-Pool
+    <a href="/listings/filter/Amazing-Pool">
+      <div><i class="fa-solid fa-water-ladder"></i></div>
+      Amazing-Pool
+    </a>
   </div>
   <div class="filter">
-    <div><i class="fa-solid fa-cow"></i></div>
-    Farmhouse
+    <a href="/listings/filter/Farmhouse">
+      <div><i class="fa-solid fa-tractor"></i></div>
+      Farmhouse
+    </a>
   </div>
   <div class="filter">
-    <div><i class="fa-brands fa-fort-awesome"></i></div>
-    Mansion
+    <a href="/listings/filter/Mansion">
+      <div><i class="fa-solid fa-building"></i></div>
+      Mansion
+    </a>
   </div>
   <div class="filter">
-    <div><i class="fa-solid fa-face-surprise"></i></div>
-    OMG!
+    <a href="/listings/filter/OMG!">
+      <div><i class="fa-solid fa-bolt"></i></div>
+      OMG!
+    </a>
   </div>
   <div class="filter">
-    <div><i class="fa-solid fa-umbrella-beach"></i></div>
-    Beach-Front
+    <a href="/listings/filter/Beach-Front">
+      <div><i class="fa-solid fa-umbrella-beach"></i></div>
+      Beach-Front
+    </a>
   </div>
   <div class="filter">
-    <div><i class="fa-solid fa-snowflake"></i></div>
-    Artic
+    <a href="/listings/filter/Arctic">
+      <div><i class="fa-solid fa-snowflake"></i></div>
+      Arctic
+    </a>
   </div>
 </div>
 
