@@ -1,82 +1,85 @@
 <% layout("/layouts/boilerplate") %>
 <!-- <h3>All Listings</h3> -->
 
-<style>
-  .filter-icons {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .filter {
-    text-align: center;
-    font-size: 0.8rem;
-    margin: 2rem 0px;
-    margin-right: 2rem;
-    opacity: 0.7;
-    cursor: pointer;
-  }
-  .filter:hover {
-    opacity: 1;
-  }
-  a{
-    text-decoration: none;
-    color: black;
-  }
-</style>
-
 <div class="filter-icons">
   <div class="filter">
-    <a href="/listings/filter/General">
+    <a class="anchor" href="/listings">
       <div><i class="fa-solid fa-house"></i></div>
       General
     </a>
   </div>
   <div class="filter">
-    <a href="/listings/filter/Hill-Station">
+    <a class="anchor" href="/listings/filter/Hill-Station">
       <div><i class="fa-solid fa-mountain"></i></div>
       Hill-Station
     </a>
   </div>
   <div class="filter">
-    <a href="/listings/filter/Iconic-City">
+    <a class="anchor" href="/listings/filter/Iconic-City">
       <div><i class="fa-solid fa-city"></i></div>
       Iconic-City
     </a>
   </div>
   <div class="filter">
-    <a href="/listings/filter/Amazing-Pool">
+    <a class="anchor" href="/listings/filter/Amazing-Pool">
       <div><i class="fa-solid fa-water-ladder"></i></div>
       Amazing-Pool
     </a>
   </div>
   <div class="filter">
-    <a href="/listings/filter/Farmhouse">
-      <div><i class="fa-solid fa-tractor"></i></div>
-      Farmhouse
+    <a class="anchor" href="/listings/filter/Camping">
+      <div><i class="fa-solid fa-tent"></i></div>
+      Camping
     </a>
   </div>
   <div class="filter">
-    <a href="/listings/filter/Mansion">
-      <div><i class="fa-solid fa-building"></i></div>
+    <a class="anchor" href="/listings/filter/Mansion">
+      <div><i class="fa-solid fa-city"></i></div>
       Mansion
     </a>
   </div>
   <div class="filter">
-    <a href="/listings/filter/OMG!">
+    <a class="anchor" href="/listings/filter/OMG!">
       <div><i class="fa-solid fa-bolt"></i></div>
       OMG!
     </a>
   </div>
   <div class="filter">
-    <a href="/listings/filter/Beach-Front">
+    <a class="anchor" href="/listings/filter/Beach-Front">
       <div><i class="fa-solid fa-umbrella-beach"></i></div>
       Beach-Front
     </a>
   </div>
   <div class="filter">
-    <a href="/listings/filter/Arctic">
+    <a class="anchor" href="/listings/filter/Artic">
       <div><i class="fa-solid fa-snowflake"></i></div>
-      Arctic
+      Artic
     </a>
+  </div>
+  <div class="filter">
+    <a class="anchor" href="/listings/filter/Boat-House">
+      <div><i class="fa-solid fa-sailboat"></i></div>
+      Boat-House
+    </a>
+  </div>
+  <div class="filter">
+    <a class="anchor" href="/listings/filter/Single-Room">
+      <div><i class="fa-solid fa-house-user"></i></div>
+      Single-Room
+    </a>
+  </div>
+  <div class="tax-toggle">
+    <div class="form-check-reverse form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckDefault"
+      />
+      <label class="form-check-label" for="flexSwitchCheckDefault"
+        >Display total after taxes</label
+      >
+    </div>
   </div>
 </div>
 
@@ -95,10 +98,31 @@
         <p class="card-text">
           <b><%= listing.title %></b>
           <br />
-          &#8377; <%= listing.price.toLocaleString("en-IN") %> / Night
+          <i class="non-tax">
+            &#8377; <%= listing.price.toLocaleString("en-IN") %> / Night
+            &nbsp;</i
+          >
+          <i class="tax-info">
+            &#8377; <%= (listing.price+(listing.price *
+            0.18)).toLocaleString("en-IN")%> / Night</i
+          >
         </p>
       </div>
     </div>
   </a>
   <% } %>
 </div>
+
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.querySelectorAll(".tax-info");
+    let nonTaxInfo = document.querySelectorAll(".non-tax");
+    nonTaxInfo.forEach((tax) => {
+      tax.style.display = tax.style.display != "none" ? "none" : "inline";
+    });
+    taxInfo.forEach((tax) => {
+      tax.style.display = tax.style.display != "inline" ? "inline" : "none";
+    });
+  });
+</script>
