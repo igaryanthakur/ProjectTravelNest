@@ -68,7 +68,7 @@ const sessionOptions = {
 };
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "views", "listings", "root.html"));
+  res.sendFile(`${__dirname}/views/extras/root.html`);
 });
 
 app.use(session(sessionOptions));
