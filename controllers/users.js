@@ -51,10 +51,10 @@ module.exports.renderTerms = (req, res) => {
 
 module.exports.renderProfile = async (req, res) => {
   const user = await User.findById(req.user._id).populate({
-      path: 'bookings',
-      populate: {
-          path: 'listing'
-      }
+    path: "bookings",
+    populate: {
+      path: "listing",
+    },
   });
-  res.render('users/profile', { currUser: user });
+  res.render("users/profile", { currUser: user });
 };

@@ -1,26 +1,45 @@
 <% layout("/layouts/boilerplate") %>
-<div class="profile-text col-6 offset-3 mb-3 mt-2">
-  <div>
-    <p><b>Username:</b> <%= currUser.username %></p>
-    <p><b>Email:</b> <%= currUser.email %></p>
-    <p><b>Password:</b> ********</p>
+<div>
+  <div class="col-8 offset-3 mt-3">
+    <h4>User Details:</h4>
+    <div>
+      <p><b>Username:</b> <%= currUser.username %></p>
+      <p><b>Email:</b> <%= currUser.email %></p>
+      <p><b>Password:</b> ********</p>
+    </div>
   </div>
+
   <% if(currUser.bookings.length > 0) { %>
-  <div class="row">
-    <p><b>Bookings</b></p>
+  <div class="col-8 offset-3">
+    <hr />
+    <h4>Bookings</h4>
     <% for (booking of currUser.bookings) { %>
-    <form action="">
-      <div class="card col-5 ms-3 mb-3">
-        <div class="card-body">
-          <h5 class="card-title">@<%= booking.listing.title %></h5>
-          <label for="fromDate">From Date: </label>
-          <input type="date" id="fromDate" value="booking.fromDate " />
-          <label for="toDate" class="offset-3">To Date: </label>
-          <input type="date" id="toDate" value="toDate" /><br />
-          <button class="btn btn-sm btn-dark">Cancel</button>
-        </div>
+    <div class="booking mb-3">
+      <p>Property: <%= booking.listing.title %></p>
+      <p>Amount: <%= booking.listing.price %></p>
+      <div class="mb-2">
+        <label for="fromDate">From Date: </label>
+        <input
+          type="date"
+          id="fromDate"
+          value="<%= booking.fromDate.toISOString().split('T')[0] %>"
+          disabled
+        />
+        <label for="toDate" class="offset-3">To Date: </label>
+        <input
+          type="date"
+          id="toDate"
+          value="<%= booking.toDate.toISOString().split('T')[0] %>"
+          disabled
+        />
       </div>
-    </form>
+      <form
+        action="/listings/<%= booking.listing._id %>/book/<%= booking._id %>?_method=DELETE"
+        method="post"
+      >
+        <button class="btn btn-sm btn-dark">Cancel</button>
+      </form>
+    </div>
     <% } %>
   </div>
   <% } %>

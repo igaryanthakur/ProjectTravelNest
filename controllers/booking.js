@@ -13,11 +13,11 @@ module.exports.createBooking = async (req, res) => {
   res.redirect(`/listings/${req.params.id}`);
 };
 
-// module.exports.destroyReview = async (req, res) => {
-//   let { id, reviewID } = req.params;
+module.exports.destroyBooking = async (req, res) => {
+  let { bookingID } = req.params;
 
-//   await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewID } });
-//   await Review.findByIdAndDelete(reviewID);
-//   req.flash("success", "Successfully deleted the review!");
-//   res.redirect(`/listings/${id}`);
-// };
+  await User.findByIdAndUpdate(req.user._id, { $pull: { bookings: bookingID } });
+  await Booking.findByIdAndDelete(bookingID);
+  req.flash("success", "Successfully cancelled the booking!");
+  res.redirect(`/profile`);
+};

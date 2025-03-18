@@ -41,7 +41,7 @@ body {
   display: flex;
   align-items: center;
   margin: 0px 1rem;
-  color: #1877F2 !important;
+  color: #1877f2 !important;
 }
 
 .icon-text {
@@ -235,10 +235,4 @@ body {
 
 #bookingModal {
   display: none;
-}
-
-/* Profile Page */
-.profile-text {
-  font-size: 1.25rem;
-  margin: 1rem 0px;
 }

@@ -18,3 +18,10 @@ module.exports.reviewSchema = Joi.object({
     comment: Joi.string().required(),
   }).required(),
 });
+
+module.exports.bookingSchema = Joi.object({
+  booking: Joi.object({
+    fromDate: Joi.date().required(),
+    toDate: Joi.date().required(),
+  }).required(),
+});
