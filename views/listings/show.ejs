@@ -5,10 +5,10 @@
 </script>
 <div>
   <div class="row">
-    <div class="col-8 offset-3">
+    <div class="col-8 offset-3 mt-2">
       <h3><%= listing.title %></h3>
     </div>
-    <div class="card col-6 offset-3 show-card listing-card">
+    <div class="card col-6 offset-3 show-card listing-card mb-3">
       <img
         class="card-img-top show-img"
         src="<%= listing.image.url %>"
@@ -36,6 +36,21 @@
     >
     <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
       <button class="btn btn-dark offset-5">Delete</button>
+    </form>
+  </div>
+  <% } %> <% if (currUser && !currUser._id.equals(listing.owner._id) &&
+  !currUser._id.equals(admin)) { %>
+  <button id="bookButton" class="btn btn-dark edit-btn offset-3">Book</button>
+  <div id="bookingModal" class="col-8 offset-3 mb-3">
+    <hr />
+    <form action="/listings/<%= listing._id %>/book" method="post">
+      <h3 class="book-head mb-3">Book this property</h3>
+      <span class="cross"><i class="fa-solid fa-xmark"></i></span><br />
+      <label for="fromDate">From Date: </label>
+      <input type="date" id="fromDate" name="booking[fromDate]" required />
+      <label for="toDate" class="offset-3">To Date: </label>
+      <input type="date" id="toDate" name="booking[toDate]" required /><br />
+      <button type="submit" class="btn btn-dark edit-btn mt-3">Confirm</button>
     </form>
   </div>
   <% } %>
@@ -146,3 +161,18 @@
 </div>
 
 <script src="/js/map.js"></script>
+<script>
+  const bookButton = document.getElementById("bookButton");
+  const bookingModal = document.getElementById("bookingModal");
+  const closeModal = document.querySelector(".cross");
+
+  // Open the booking modal
+  bookButton.addEventListener("click", () => {
+    bookingModal.style.display = "block";
+  });
+
+  // Close the booking modal
+  closeModal.addEventListener("click", () => {
+    bookingModal.style.display = "none";
+  });
+</script>

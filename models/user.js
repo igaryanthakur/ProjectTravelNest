@@ -9,6 +9,12 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
+  bookings: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Review",
+    },
+  ],
 });
 
 userSchema.plugin(passportLocalMongoose);

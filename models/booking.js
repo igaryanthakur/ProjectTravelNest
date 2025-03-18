@@ -14,11 +14,9 @@ const bookingSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  listing: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Listing",
-    },
-  ],
+  listing: {
+    type: Schema.Types.ObjectId,
+    ref: "Listing",
+  },
 });
-module.exports = mongoose.model("Review", bookingSchema);
+module.exports = mongoose.model("Booking", bookingSchema);

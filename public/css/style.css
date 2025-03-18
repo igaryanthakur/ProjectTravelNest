@@ -36,6 +36,19 @@ body {
   color: #222222 !important;
 }
 
+.user-icon {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  margin: 0px 1rem;
+  color: #1877F2 !important;
+}
+
+.icon-text {
+  font-size: 1rem !important;
+  font-weight: 700;
+}
+
 /* Footer */
 .f-info-links a {
   text-decoration: none;
@@ -205,4 +218,27 @@ body {
   font-size: 1rem !important;
   text-align: center !important;
   cursor: pointer;
+}
+
+/* Booking  */
+.cross {
+  display: inline-flex;
+  justify-content: end;
+  font-size: 1.5rem;
+  width: 60%;
+}
+
+.book-head {
+  width: 39%;
+  display: inline-block;
+}
+
+#bookingModal {
+  display: none;
+}
+
+/* Profile Page */
+.profile-text {
+  font-size: 1.25rem;
+  margin: 1rem 0px;
 }

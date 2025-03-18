@@ -6,6 +6,7 @@
         <span class="logo-text">TravelNest</span>
       </a>
     </div>
+
     <button
       class="navbar-toggler"
       type="button"
@@ -14,11 +15,8 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <!-- <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
-      </div> -->
 
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto" id="navbarNavAltMarkup">
         <form
           action="/listings/search"
@@ -64,6 +62,9 @@
         <a class="nav-link" href="/signup"><b>Sign Up</b></a>
         <a class="nav-link" href="/login"><b>Login</b></a>
         <% } else { %>
+        <a href="/profile" class="user-icon anchor"
+          ><i class="fa-regular fa-circle-user"></i
+        ><span class="icon-text">User</span></a>
         <a class="nav-link" href="/logout"><b>Logout</b></a>
         <% } %>
       </div>

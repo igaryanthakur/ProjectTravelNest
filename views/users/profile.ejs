@@ -1,0 +1,27 @@
+<% layout("/layouts/boilerplate") %>
+<div class="profile-text col-6 offset-3 mb-3 mt-2">
+  <div>
+    <p><b>Username:</b> <%= currUser.username %></p>
+    <p><b>Email:</b> <%= currUser.email %></p>
+    <p><b>Password:</b> ********</p>
+  </div>
+  <% if(currUser.bookings.length > 0) { %>
+  <div class="row">
+    <p><b>Bookings</b></p>
+    <% for (booking of currUser.bookings) { %>
+    <form action="">
+      <div class="card col-5 ms-3 mb-3">
+        <div class="card-body">
+          <h5 class="card-title">@<%= booking.listing.title %></h5>
+          <label for="fromDate">From Date: </label>
+          <input type="date" id="fromDate" value="booking.fromDate " />
+          <label for="toDate" class="offset-3">To Date: </label>
+          <input type="date" id="toDate" value="toDate" /><br />
+          <button class="btn btn-sm btn-dark">Cancel</button>
+        </div>
+      </div>
+    </form>
+    <% } %>
+  </div>
+  <% } %>
+</div>
