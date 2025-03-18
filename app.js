@@ -22,7 +22,6 @@ const User = require("./models/user.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
-const pagesRouter = require("./routes/extras.js");
 
 main()
   .then(() => {
@@ -91,7 +90,6 @@ app.use((req, res, next) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
-app.use("/", pagesRouter);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found!"));
@@ -99,7 +97,6 @@ app.all("*", (req, res, next) => {
 
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Something went wrong!" } = err;
-  //   res.status(statusCode).send(message);
   res.status(statusCode).render("Error.ejs", { message });
 });
 
