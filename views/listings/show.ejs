@@ -26,7 +26,8 @@
     </div>
   </div>
 
-  <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
+  <% if(currUser && (currUser._id.equals(listing.owner._id) ||
+  currUser._id.equals(admin)) ) { %>
   <div class="btns">
     <a
       href="/listings/<%= listing._id %>/edit"

@@ -23,7 +23,7 @@ module.exports.showListing = async (req, res) => {
     req.flash("error", "Listing you requested doesn't exist!");
     res.redirect("/listings");
   }
-  res.render("listings/show.ejs", { listing });
+  res.render("listings/show.ejs", { listing, admin: process.env.ADMIN });
 };
 
 module.exports.searchListings = async (req, res) => {

@@ -35,7 +35,7 @@ module.exports.isLoggedIn = (req, res, next) => {
 module.exports.saveRedirectUrl = (req, res, next) => {
   if (req.session.redirectUrl) {
     res.locals.redirectUrl = req.session.redirectUrl;
-  }else{
+  } else {
     res.locals.redirectUrl = "/listings";
   }
   next();
@@ -44,11 +44,12 @@ module.exports.saveRedirectUrl = (req, res, next) => {
 module.exports.isOwner = async (req, res, next) => {
   let { id } = req.params;
   let listing = await Listing.findById(id);
-  if (!listing.owner.equals(res.locals.currUser._id)) {
+  if (listing.owner.equals(res.locals.currUser._id) || res.locals.currUser.equals(process.env.ADMIN)) {
+    next();
+  } else {
     req.flash("error", "You are not authorized to do that!");
     return res.redirect(`/listings/${id}`);
   }
-  next();
 };
 
 module.exports.isReviewAuthor = async (req, res, next) => {
@@ -59,4 +60,4 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     return res.redirect(`/listings/${id}`);
   }
   next();
-}
+};
