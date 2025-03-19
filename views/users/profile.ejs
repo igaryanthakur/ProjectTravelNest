@@ -16,7 +16,14 @@
     <% for (booking of currUser.bookings) { %>
     <div class="booking mb-3">
       <p>Property: <%= booking.listing.title %></p>
-      <p>Amount: <%= booking.listing.price %></p>
+      <p>
+        &#8377; Amount: <% const fromDate = new Date(booking.fromDate); const
+        toDate = new Date(booking.toDate); const diffTime = Math.abs(toDate -
+        fromDate); const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        %> <%= (booking.listing.price + (booking.listing.price * 0.18)) *
+        diffDays %> /Night
+      </p>
+
       <div class="mb-2">
         <label for="fromDate">From Date: </label>
         <input
