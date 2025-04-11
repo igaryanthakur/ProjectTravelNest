@@ -83,6 +83,25 @@
   </div>
 </div>
 
+<!-- Price filter temporarily disabled
+<div class="price-filter">
+  <div class="price-filter-content">
+    <label for="priceRange">Price Range</label>
+    <div class="range-container">
+      <input
+        type="range"
+        id="priceRange"
+        min="0"
+        max="10000"
+        step="500"
+        value="10000"
+      />
+      <span id="priceValue">₹10,000</span>
+    </div>
+  </div>
+</div>
+-->
+
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
   <% for (let listing of allListings) { %>
   <a href="/listings/<%= listing._id%>" class="listing-link">
@@ -125,4 +144,26 @@
       tax.style.display = tax.style.display != "inline" ? "inline" : "none";
     });
   });
+
+  /* Price range filter temporarily disabled
+  const priceRange = document.getElementById("priceRange");
+  const priceValue = document.getElementById("priceValue");
+  const listingCards = document.querySelectorAll(".listing-card");
+
+  priceRange.addEventListener("input", () => {
+    const maxPrice = priceRange.value;
+    priceValue.textContent = `₹${parseInt(maxPrice).toLocaleString("en-IN")}`;
+
+    listingCards.forEach((card) => {
+      const price = parseInt(
+        card.querySelector(".non-tax").textContent.replace(/[^0-9]/g, "")
+      );
+      if (price <= maxPrice) {
+        card.parentElement.style.display = "block";
+      } else {
+        card.parentElement.style.display = "none";
+      }
+    });
+  });
+  */
 </script>

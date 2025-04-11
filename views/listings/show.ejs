@@ -62,9 +62,7 @@
             name="booking[toDate]"
             required
           /><br />
-          <button type="submit" class="btn btn-success mt-3">
-            Confirm
-          </button>
+          <button type="submit" class="btn btn-success mt-3">Confirm</button>
         </form>
       </div>
     </div>
@@ -133,7 +131,7 @@
           </fieldset>
         </div>
 
-        <div >
+        <div>
           <label class="form-label" for="comment">Comment</label>
           <textarea
             id="comment"
@@ -197,5 +195,25 @@
   // Close the booking modal
   closeModal.addEventListener("click", () => {
     bookingModal.style.display = "none";
+  });
+
+  // Add date validation
+  const fromDateInput = document.getElementById("fromDate");
+  const toDateInput = document.getElementById("toDate");
+
+  // Set minimum date to today
+  const today = new Date().toISOString().split("T")[0];
+  fromDateInput.min = today;
+  toDateInput.min = today;
+
+  // Ensure toDate is after fromDate
+  fromDateInput.addEventListener("change", () => {
+    toDateInput.min = fromDateInput.value;
+  });
+
+  toDateInput.addEventListener("change", () => {
+    if (fromDateInput.value > toDateInput.value) {
+      toDateInput.value = fromDateInput.value;
+    }
   });
 </script>

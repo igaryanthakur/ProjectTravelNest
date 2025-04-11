@@ -111,8 +111,29 @@
       </div>
 
       <div class="mb-3">
-        <button class="btn btn-dark add-btn mt-2" type="submit">Add</button>
+        <button class="btn btn-dark add-btn mt-2" type="submit" id="submitBtn">
+          Add
+        </button>
+        <div
+          class="spinner-border text-primary d-none"
+          id="loadingSpinner"
+          role="status"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </div>
     </form>
   </div>
 </div>
+
+<script>
+  const form = document.querySelector("form");
+  const submitBtn = document.getElementById("submitBtn");
+  const loadingSpinner = document.getElementById("loadingSpinner");
+
+  form.addEventListener("submit", () => {
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Adding...";
+    loadingSpinner.classList.remove("d-none");
+  });
+</script>
