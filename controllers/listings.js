@@ -27,28 +27,44 @@ module.exports.showListing = async (req, res) => {
 };
 
 module.exports.searchListings = async (req, res) => {
-  const { country } = req.query;
-  const searchedListings = await Listing.find({ country });
+  const { country, category } = req.query;
+  let filter = {};
 
-  if (searchedListings.length === 0) {
-    req.flash("error", "No stays available in the searched country");
-    return res.redirect("/listings");
-  }
+  if (country) filter.country = country;
+  if (category) filter.category = category;
 
-  res.render("listings/index.ejs", { allListings: searchedListings });
+  const searchedListings = await Listing.find(filter);
+  res.render("listings/index.ejs", {
+    allListings: searchedListings,
+    searchCountry: country,
+    filterCategory: category,
+  });
 };
 
 module.exports.filteredListings = async (req, res) => {
   const { category } = req.params;
   const filteredListings = await Listing.find({ category });
-  res.render("listings/index.ejs", { allListings: filteredListings });
+  res.render("listings/index.ejs", {
+    allListings: filteredListings,
+    filterCategory: category,
+  });
 };
 
 module.exports.filterByPrice = async (req, res) => {
   const { price } = req.params;
-  const maxPrice = parseInt(price);
-  const filteredListings = await Listing.find({ price: { $lte: maxPrice } });
-  res.render("listings/index.ejs", { allListings: filteredListings });
+  const { country, category } = req.query;
+  let filter = { price: { $lte: parseInt(price) } };
+
+  if (country) filter.country = country;
+  if (category) filter.category = category;
+
+  const filteredListings = await Listing.find(filter);
+  res.render("listings/index.ejs", {
+    allListings: filteredListings,
+    searchCountry: country,
+    filterCategory: category,
+    filterPrice: price,
+  });
 };
 
 module.exports.createListing = async (req, res) => {
@@ -123,6 +139,7 @@ module.exports.destroyListing = async (req, res) => {
   let deletedListing = await Listing.findByIdAndDelete(id);
   if (deletedListing) {
     try {
+      // Delete the image from Cloudinary using the public_id (filename)
       await cloudinary.uploader.destroy(deletedListing.image.filename);
       console.log();
     } catch (err) {

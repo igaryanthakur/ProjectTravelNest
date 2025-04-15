@@ -256,10 +256,6 @@ body {
   background-color: #f8f9fa;
 }
 
-.non-tax {
-  transition: display 0.3s ease-in-out;
-}
-
 .form-check-input:checked {
   background-color: #fe424d;
   border-color: #fe424d;
