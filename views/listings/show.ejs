@@ -9,7 +9,7 @@
       <div>
         <h3><%= listing.title %></h3>
       </div>
-      <div class="card col-6 show-card listing-card mb-3">
+      <div class="card col-8 show-card listing-card mb-3">
         <img
           class="card-img-top show-img"
           src="<%= listing.image.url %>"
@@ -44,27 +44,20 @@
 
   <div class="row">
     <% if (currUser && !currUser._id.equals(listing.owner._id)) { %>
-    <div class="mt-4">
-      <div>
-        <button id="bookButton" class="btn btn-primary">Book</button>
-      </div>
-      <div id="bookingModal">
-        <hr />
-        <form action="/listings/<%= listing._id %>/book" method="post">
-          <h4 class="book-head mb-3">Book this property</h4>
-          <span class="cross"><i class="fa-solid fa-xmark"></i></span><br />
-          <label for="fromDate">From Date: </label>
-          <input type="date" id="fromDate" name="booking[fromDate]" required />
-          <label for="toDate" class="offset-3">To Date: </label>
-          <input
-            type="date"
-            id="toDate"
-            name="booking[toDate]"
-            required
-          /><br />
-          <button type="submit" class="btn btn-success mt-3">Confirm</button>
-        </form>
-      </div>
+    <div>
+      <button id="bookButton" class="btn btn-primary">Book</button>
+    </div>
+    <div id="bookingModal">
+      <hr />
+      <form action="/listings/<%= listing._id %>/book" method="post">
+        <h4 class="book-head mb-3">Book this property</h4>
+        <span class="cross"><i class="fa-solid fa-xmark"></i></span><br />
+        <label for="fromDate">From Date: </label>
+        <input type="date" id="fromDate" name="booking[fromDate]" required />
+        <label for="toDate" class="offset-3">To Date: </label>
+        <input type="date" id="toDate" name="booking[toDate]" required /><br />
+        <button type="submit" class="btn btn-success mt-3">Confirm</button>
+      </form>
     </div>
     <% } %>
   </div>

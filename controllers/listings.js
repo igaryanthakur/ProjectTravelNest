@@ -44,6 +44,13 @@ module.exports.filteredListings = async (req, res) => {
   res.render("listings/index.ejs", { allListings: filteredListings });
 };
 
+module.exports.filterByPrice = async (req, res) => {
+  const { price } = req.params;
+  const maxPrice = parseInt(price);
+  const filteredListings = await Listing.find({ price: { $lte: maxPrice } });
+  res.render("listings/index.ejs", { allListings: filteredListings });
+};
+
 module.exports.createListing = async (req, res) => {
   let response = await geocodingClient
     .forwardGeocode({
@@ -116,7 +123,6 @@ module.exports.destroyListing = async (req, res) => {
   let deletedListing = await Listing.findByIdAndDelete(id);
   if (deletedListing) {
     try {
-      // Delete the image from Cloudinary using the public_id (filename)
       await cloudinary.uploader.destroy(deletedListing.image.filename);
       console.log();
     } catch (err) {

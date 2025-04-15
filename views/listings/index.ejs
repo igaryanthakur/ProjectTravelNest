@@ -67,34 +67,32 @@
       Single-Room
     </a>
   </div>
-  <div class="tax-toggle">
+
+  <div class="filter dropdown">
+    <a class="anchor dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <div><i class="fa-solid fa-indian-rupee-sign"></i></div>
+      Price Range
+    </a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="/listings/filter-price/1000">Under ₹1,000</a></li>
+      <li><a class="dropdown-item" href="/listings/filter-price/2000">Under ₹2,000</a></li>
+      <li><a class="dropdown-item" href="/listings/filter-price/3000">Under ₹3,000</a></li>
+      <li><a class="dropdown-item" href="/listings/filter-price/5000">Under ₹5,000</a></li>
+      <li><a class="dropdown-item" href="/listings/filter-price/10000">Under ₹10,000</a></li>
+    </ul>
+  </div>
+
+  <div class="tax-toggle cursor">
     <div class="form-check-reverse form-switch">
       <input
-        class="form-check-input"
+        class="form-check-input cursor"
         type="checkbox"
         role="switch"
         id="flexSwitchCheckDefault"
       />
-      <label class="form-check-label" for="flexSwitchCheckDefault"
-        >Display total after taxes</label
+      <label class="form-check-label cursor" for="flexSwitchCheckDefault"
+        >Display total</label
       >
-    </div>
-  </div>
-</div>
-
-<div class="price-filter">
-  <div class="price-filter-content">
-    <label for="priceRange">Price Range</label>
-    <div class="range-container">
-      <input
-        type="range"
-        id="priceRange"
-        min="0"
-        max="10000"
-        step="500"
-        value="10000"
-      />
-      <span id="priceValue">₹10,000</span>
     </div>
   </div>
 </div>
@@ -139,26 +137,6 @@
     });
     taxInfo.forEach((tax) => {
       tax.style.display = tax.style.display != "inline" ? "inline" : "none";
-    });
-  });
-
-  const priceRange = document.getElementById("priceRange");
-  const priceValue = document.getElementById("priceValue");
-  const listingCards = document.querySelectorAll(".listing-card");
-
-  priceRange.addEventListener("input", () => {
-    const maxPrice = priceRange.value;
-    priceValue.textContent = `₹${parseInt(maxPrice).toLocaleString("en-IN")}`;
-
-    listingCards.forEach((card) => {
-      const price = parseInt(
-        card.querySelector(".non-tax").textContent.replace(/[^0-9]/g, "")
-      );
-      if (price <= maxPrice) {
-        card.parentElement.style.display = "block";
-      } else {
-        card.parentElement.style.display = "none";
-      }
     });
   });
 </script>

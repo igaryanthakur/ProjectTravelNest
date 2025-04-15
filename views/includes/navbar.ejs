@@ -29,26 +29,13 @@
             id="country"
             class="form-control me-2 search-inp"
             role="search"
+            required
           >
-            <option value="" disabled selected>Choose Country</option>
-            <option value="United Arab Emirates">United Arab Emirates</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="Thailand">Thailand</option>
-            <option value="United States">United States</option>
-            <option value="Canada">Canada</option>
-            <option value="Indonesia">Indonesia</option>
-            <option value="Fiji">Fiji</option>
-            <option value="Netherlands">Netherlands</option>
-            <option value="Tanzania">Tanzania</option>
-            <option value="Switzerland">Switzerland</option>
-            <option value="Mexico">Mexico</option>
-            <option value="Italy">Italy</option>
-            <option value="Monaco">Monaco</option>
-            <option value="India">India</option>
-            <option value="Costa Rica">Costa Rica</option>
-            <option value="Maldives">Maldives</option>
-            <option value="Japan">Japan</option>
-            <option value="Greece">Greece</option>
+            <option value="" disabled <%= !locals.searchCountry ? 'selected' : '' %>>Choose Country</option>
+            <% const countries = ["United Arab Emirates", "United Kingdom", "Thailand", "United States", "Canada", "Indonesia", "Fiji", "Netherlands", "Tanzania", "Switzerland", "Mexico", "Italy", "Monaco", "India", "Costa Rica", "Maldives", "Japan", "Greece"]; %>
+            <% countries.forEach(country => { %>
+              <option value="<%= country %>" <%= locals.searchCountry === country ? 'selected' : '' %>><%= country %></option>
+            <% }); %>
           </select>
           <button class="btn search-btn" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>Search

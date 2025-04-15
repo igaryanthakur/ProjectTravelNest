@@ -26,6 +26,9 @@ router.get("/search", wrapAsync(listingController.searchListings));
 // Filtered Listings Route
 router.get("/filter/:category", wrapAsync(listingController.filteredListings));
 
+// Price Filter Route
+router.get("/filter-price/:price", wrapAsync(listingController.filterByPrice));
+
 // New Route
 router.route("/new").get(isLoggedIn, listingController.renderNewForm);
 
