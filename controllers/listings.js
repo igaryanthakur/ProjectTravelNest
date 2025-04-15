@@ -4,7 +4,7 @@ const { geocodingClient, cloudinary } = require("../cloudConfig");
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
+  res.render("listings/index.ejs", { allListings, searchCountry: null });
 };
 
 module.exports.renderNewForm = (req, res) => {
@@ -30,22 +30,24 @@ module.exports.searchListings = async (req, res) => {
   const { country, category } = req.query;
   let filter = {};
 
-  if (country) filter.country = country;
+  if (country && country.trim() !== "") filter.country = country;
   if (category) filter.category = category;
 
   const searchedListings = await Listing.find(filter);
   res.render("listings/index.ejs", {
     allListings: searchedListings,
-    searchCountry: country,
+    searchCountry: country && country.trim() !== "" ? country : null,
     filterCategory: category,
   });
 };
 
 module.exports.filteredListings = async (req, res) => {
   const { category } = req.params;
+  const { country } = req.query;
   const filteredListings = await Listing.find({ category });
   res.render("listings/index.ejs", {
     allListings: filteredListings,
+    searchCountry: country && country.trim() !== "" ? country : null,
     filterCategory: category,
   });
 };
@@ -55,13 +57,13 @@ module.exports.filterByPrice = async (req, res) => {
   const { country, category } = req.query;
   let filter = { price: { $lte: parseInt(price) } };
 
-  if (country) filter.country = country;
+  if (country && country.trim() !== "") filter.country = country;
   if (category) filter.category = category;
 
   const filteredListings = await Listing.find(filter);
   res.render("listings/index.ejs", {
     allListings: filteredListings,
-    searchCountry: country,
+    searchCountry: country && country.trim() !== "" ? country : null,
     filterCategory: category,
     filterPrice: price,
   });
@@ -139,7 +141,6 @@ module.exports.destroyListing = async (req, res) => {
   let deletedListing = await Listing.findByIdAndDelete(id);
   if (deletedListing) {
     try {
-      // Delete the image from Cloudinary using the public_id (filename)
       await cloudinary.uploader.destroy(deletedListing.image.filename);
       console.log();
     } catch (err) {
