@@ -22,23 +22,6 @@
   });
 })();
 
-// Tax Toggle
-function initTaxToggle() {
-  const taxSwitch = document.getElementById("flexSwitchCheckDefault");
-  if (!taxSwitch) return;
-
-  taxSwitch.addEventListener("click", () => {
-    let taxInfo = document.querySelectorAll(".tax-info");
-    let nonTaxInfo = document.querySelectorAll(".non-tax");
-    nonTaxInfo.forEach((tax) => {
-      tax.style.display = tax.style.display != "none" ? "none" : "inline";
-    });
-    taxInfo.forEach((tax) => {
-      tax.style.display = tax.style.display != "inline" ? "inline" : "none";
-    });
-  });
-}
-
 // Filter Updates
 function updateFilterLinks() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -79,6 +62,5 @@ function updateFilterLinks() {
 
 // Initialize all functions
 document.addEventListener("DOMContentLoaded", () => {
-  initTaxToggle();
   updateFilterLinks();
 });

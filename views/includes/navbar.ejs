@@ -29,8 +29,9 @@
             id="country"
             class="form-control me-2 search-inp"
             role="search"
+            
           >
-            <option value="">Choose Country</option>
+            <option value="">All Countries</option>
             <% const countries = ["United Arab Emirates", "United Kingdom", "Thailand", "United States", "Canada", "Indonesia", "Fiji", "Netherlands", "Tanzania", "Switzerland", "Mexico", "Italy", "Monaco", "India", "Costa Rica", "Maldives", "Japan", "Greece"]; %>
             <% countries.forEach(country => { %>
               <option value="<%= country %>" <%= (typeof searchCountry !== 'undefined' && searchCountry === country) ? 'selected' : '' %>><%= country %></option>
