@@ -121,19 +121,20 @@ module.exports.updateProfile = async (req, res) => {
   }
 };
 
-module.exports.deleteProfile = async (req, res) => {
+module.exports.deleteProfile = async (req, res, next) => { // Add next parameter
   if (!req.isAuthenticated() || !req.user) {
     req.flash("error", "You must be logged in");
     return res.redirect("/login");
   }
 
-  if (req.params.id !== req.user._id.toString()) {
-    req.flash("error", "You don't have permission to do that");
-    return res.redirect("/profile");
-  }
-
   try {
     const userId = req.params.id;
+    const user = await User.findById(userId);
+    
+    if (!user) {
+      req.flash("error", "User not found");
+      return res.redirect("/listings");
+    }
 
     // Delete all reviews by the user
     await Review.deleteMany({ author: userId });
@@ -141,23 +142,27 @@ module.exports.deleteProfile = async (req, res) => {
     // Delete all bookings by the user
     await Booking.deleteMany({ user: userId });
 
-    // Find all listings owned by the user
+    // Find and delete listings
     const userListings = await Listing.find({ owner: userId });
-    
-    // Use destroyListing method for each listing with proper mock objects
     for (let listing of userListings) {
-      const mockReq = {
-        params: { id: listing._id.toString() },
-        flash: req.flash.bind(req) // Pass the actual flash function
-      };
-      const mockRes = {
-        redirect: () => {}, // Empty function since we don't need redirects
-        locals: res.locals // Pass locals if needed
-      };
-      await listingController.destroyListing(mockReq, mockRes);
+      try {
+        await listingController.destroyListing(
+          { 
+            params: { id: listing._id.toString() },
+            flash: req.flash.bind(req),
+            user: req.user
+          },
+          { 
+            redirect: () => {},
+            locals: res.locals
+          }
+        );
+      } catch (error) {
+        console.error(`Error deleting listing ${listing._id}:`, error);
+      }
     }
 
-    // Finally delete the user
+    // Delete the user
     await User.findByIdAndDelete(userId);
 
     req.logout((err) => {
@@ -166,7 +171,7 @@ module.exports.deleteProfile = async (req, res) => {
       res.redirect("/listings");
     });
   } catch (err) {
-    console.error(err);
+    console.error("Account deletion error:", err);
     req.flash("error", "Error deleting account");
     res.redirect("/profile");
   }
