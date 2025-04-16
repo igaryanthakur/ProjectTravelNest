@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router({ mergeParams: true });
 const wrapAsync = require("../utils/wrapAsync");
 const passport = require("passport");
-const { saveRedirectUrl } = require("../middleware.js");
+const { saveRedirectUrl, isLoggedIn } = require("../middleware.js");
 
 const userController = require("../controllers/users.js");
 
@@ -26,9 +26,19 @@ router
 router.get("/logout", userController.logout);
 
 router.get("/profile", userController.renderProfile);
+router.get(
+  "/profile/:id/edit",
+  isLoggedIn,
+  wrapAsync(userController.renderEditForm)
+);
+router.put("/profile/:id", isLoggedIn, wrapAsync(userController.updateProfile));
+router.delete(
+  "/profile/:id",
+  isLoggedIn,
+  wrapAsync(userController.deleteProfile)
+);
 
 router.get("/privacy", userController.renderPrivacy);
 router.get("/terms", userController.renderTerms);
-
 
 module.exports = router;

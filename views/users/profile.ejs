@@ -2,10 +2,25 @@
 <div>
   <div class="col-8 offset-3 mt-3">
     <h4>User Details:</h4>
-    <div>
+    <div class="mt-3">
       <p><b>Username:</b> <%= currUser.username %></p>
       <p><b>Email:</b> <%= currUser.email %></p>
       <p><b>Password:</b> ********</p>
+      <div class="d-flex gap-2">
+        <a
+          href="/profile/<%= currUser._id %>/edit"
+          class="btn btn-dark edit-btn"
+          >Edit Details</a
+        >
+        <form
+          action="/profile/<%= currUser._id %>?_method=DELETE"
+          method="POST"
+          class="d-inline"
+          onsubmit="return confirm('Warning! This action cannot be undone!\n\nDeleting your account will permanently remove:\n- Your account details\n- All your listings\n- All your reviews\n- All your bookings\n\nAre you sure you want to proceed?');"
+        >
+          <button class="btn btn-dark">Delete Account</button>
+        </form>
+      </div>
     </div>
   </div>
 
@@ -15,13 +30,15 @@
     <h4>Bookings</h4>
     <% for (booking of currUser.bookings) { %>
     <div class="booking mb-3">
-      <a class="anchor" href="/listings/<%= booking.listing._id %>"><p>Property: <%= booking.listing.title %></p></a>
+      <a class="anchor" href="/listings/<%= booking.listing._id %>"
+        ><p>Property: <%= booking.listing.title %></p></a
+      >
       <p>
-        Total Amount: &#8377; <% const fromDate = new Date(booking.fromDate); const
-        toDate = new Date(booking.toDate); const diffTime = Math.abs(toDate -
-        fromDate); const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        %> <%= (booking.listing.price + (booking.listing.price * 0.18)) *
-        diffDays %> /Night
+        Total Amount: &#8377; <% const fromDate = new Date(booking.fromDate);
+        const toDate = new Date(booking.toDate); const diffTime =
+        Math.abs(toDate - fromDate); const diffDays = Math.ceil(diffTime / (1000
+        * 60 * 60 * 24)); %> <%= (booking.listing.price + (booking.listing.price
+        * 0.18)) * diffDays %> /Night
       </p>
 
       <div class="mb-2">
@@ -48,6 +65,41 @@
       </form>
     </div>
     <% } %>
+  </div>
+  <% } %> <% if(ownedListings && ownedListings.length > 0) { %>
+  <div class="col-8 offset-3">
+    <hr />
+    <h4>Your Listings</h4>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% for (let listing of ownedListings) { %>
+      <div class="col">
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+          <div class="card listing-card h-100">
+            <img
+              src="<%= listing.image.url %>"
+              class="card-img-top"
+              alt="listing_image"
+              style="height: 200px; object-fit: cover"
+            />
+            <div class="card-img-overlay"></div>
+            <div class="card-body">
+              <p class="card-text">
+                <b><%= listing.title %></b><br />
+                <i class="non-tax"
+                  >&#8377; <%= listing.price.toLocaleString("en-IN") %> /
+                  Night</i
+                >
+                <i class="tax-info"
+                  >&#8377; <%= (listing.price+(listing.price *
+                  0.18)).toLocaleString("en-IN")%> / Night</i
+                >
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <% } %>
+    </div>
   </div>
   <% } %>
 </div>
