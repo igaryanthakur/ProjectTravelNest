@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listings.js");
 require("dotenv").config();
+<<<<<<< HEAD
+=======
+const { geocodingClient } = require("../cloudConfig"); // Import from cloudConfig
+>>>>>>> parent of e2f027d (Data removed)
 
 const Mongo_Url = "mongodb://localhost:27017/travelnest";
 
@@ -20,12 +24,35 @@ async function main() {
 const initDB = async () => {
   await Listing.deleteMany({});
   for (let obj of initData.data) {
+<<<<<<< HEAD
     // Default geometry - can be enhanced later with actual geocoding
     obj.geometry = {
       type: "Point",
       coordinates: [0, 0], // Placeholder coordinates
     };
     obj.owner = process.env.ADMIN || "693e58ea5a57821ac739b4c4";
+=======
+    try {
+      let response = await geocodingClient
+        .forwardGeocode({
+          query: obj.location,
+          limit: 1,
+        })
+        .send();
+      const geometry = response.body.features[0]?.geometry || {
+        type: "Point",
+        coordinates: [0, 0],
+      };
+
+      obj.owner = "67cef00492794922b75b05f2";
+      obj.geometry = geometry;
+    } catch (err) {
+      console.error(
+        `❌ Error geocoding location ${obj.location}:`,
+        err.message
+      );
+    }
+>>>>>>> parent of e2f027d (Data removed)
   }
   await Listing.insertMany(initData.data);
   console.log("✅ Data was initialized");
