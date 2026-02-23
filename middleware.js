@@ -6,7 +6,10 @@ const Review = require("./models/review.js");
 module.exports.validateListing = (req, res, next) => {
   let { error } = listingSchema.validate(req.body);
   if (error) {
-    let errMsg = error.details && error.details.length > 0 ? error.details.map((el) => el.message).join(",") : error.message;
+    let errMsg =
+      error.details && error.details.length > 0
+        ? error.details.map((el) => el.message).join(",")
+        : error.message;
     throw new ExpressError(400, errMsg);
   } else {
     next();
@@ -16,7 +19,10 @@ module.exports.validateListing = (req, res, next) => {
 module.exports.validateReview = (req, res, next) => {
   let { error } = reviewSchema.validate(req.body);
   if (error) {
-    let errMsg = error.details && error.details.length > 0 ? error.details.map((el) => el.message).join(",") : error.message;
+    let errMsg =
+      error.details && error.details.length > 0
+        ? error.details.map((el) => el.message).join(",")
+        : error.message;
     throw new ExpressError(400, errMsg);
   } else {
     next();
@@ -26,7 +32,10 @@ module.exports.validateReview = (req, res, next) => {
 module.exports.validateBooking = (req, res, next) => {
   let { error } = bookingSchema.validate(req.body);
   if (error) {
-    let errMsg = error.details && error.details.length > 0 ? error.details.map((el) => el.message).join(",") : error.message;
+    let errMsg =
+      error.details && error.details.length > 0
+        ? error.details.map((el) => el.message).join(",")
+        : error.message;
     throw new ExpressError(400, errMsg);
   } else {
     next();

@@ -117,7 +117,7 @@ module.exports.renderEditForm = async (req, res) => {
   if (listing.image && listing.image.url) {
     originalImageUrl = listing.image.url.replace(
       "upload",
-      "upload/ar_1.0,c_fill,h_200,w_200/bo_5px_solid_lightblue"
+      "upload/ar_1.0,c_fill,h_200,w_200/bo_5px_solid_lightblue",
     );
   }
   res.render("listings/edit.ejs", { listing, originalImageUrl });
@@ -143,7 +143,7 @@ module.exports.updateListing = async (req, res) => {
       } catch (err) {
         console.error(
           `❌ Failed to delete old image: ${listing.image.filename}`,
-          err.message
+          err.message,
         );
       }
     }
