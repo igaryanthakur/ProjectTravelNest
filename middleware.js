@@ -6,7 +6,7 @@ const Review = require("./models/review.js");
 module.exports.validateListing = (req, res, next) => {
   let { error } = listingSchema.validate(req.body);
   if (error) {
-    let errMsg = error.details.map((el) => el.message).join(",");
+    let errMsg = error.details && error.details.length > 0 ? error.details.map((el) => el.message).join(",") : error.message;
     throw new ExpressError(400, errMsg);
   } else {
     next();
@@ -16,7 +16,7 @@ module.exports.validateListing = (req, res, next) => {
 module.exports.validateReview = (req, res, next) => {
   let { error } = reviewSchema.validate(req.body);
   if (error) {
-    let errMsg = error.details.map((el) => el.message).join(",");
+    let errMsg = error.details && error.details.length > 0 ? error.details.map((el) => el.message).join(",") : error.message;
     throw new ExpressError(400, errMsg);
   } else {
     next();
@@ -26,7 +26,7 @@ module.exports.validateReview = (req, res, next) => {
 module.exports.validateBooking = (req, res, next) => {
   let { error } = bookingSchema.validate(req.body);
   if (error) {
-    let errMsg = error.details.map((el) => el.message).join(",");
+    let errMsg = error.details && error.details.length > 0 ? error.details.map((el) => el.message).join(",") : error.message;
     throw new ExpressError(400, errMsg);
   } else {
     next();
@@ -54,9 +54,13 @@ module.exports.saveRedirectUrl = (req, res, next) => {
 module.exports.isOwner = async (req, res, next) => {
   let { id } = req.params;
   let listing = await Listing.findById(id);
+  if (!res.locals.currUser) {
+    req.flash("error", "You must be logged in!");
+    return res.redirect("/login");
+  }
   if (
     listing.owner.equals(res.locals.currUser._id) ||
-    res.locals.currUser.equals(process.env.ADMIN)
+    res.locals.currUser._id.equals(process.env.ADMIN)
   ) {
     next();
   } else {
@@ -68,9 +72,13 @@ module.exports.isOwner = async (req, res, next) => {
 module.exports.isReviewAuthor = async (req, res, next) => {
   let { id, reviewID } = req.params;
   let review = await Review.findById(reviewID);
+  if (!res.locals.currUser) {
+    req.flash("error", "You must be logged in!");
+    return res.redirect("/login");
+  }
   if (
     review.author.equals(res.locals.currUser._id) ||
-    res.locals.currUser.equals(process.env.ADMIN)
+    res.locals.currUser._id.equals(process.env.ADMIN)
   ) {
     next();
   } else {

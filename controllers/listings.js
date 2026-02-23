@@ -70,22 +70,40 @@ module.exports.filterByPrice = async (req, res) => {
 };
 
 module.exports.createListing = async (req, res) => {
-  let response = await geocodingClient
-    .forwardGeocode({
-      query: req.body.listing.location,
-      limit: 1,
-    })
-    .send();
+  try {
+    if (!req.file) {
+      console.error("❌ No file uploaded");
+      req.flash("error", "Please upload an image!");
+      return res.redirect("/listings/new");
+    }
 
-  const newListing = new Listing(req.body.listing);
-  newListing.owner = req.user._id;
-  let url = req.file.path;
-  let filename = req.file.filename;
-  newListing.image = { url, filename };
-  newListing.geometry = response.body.features[0].geometry;
-  await newListing.save();
-  req.flash("success", "Successfully created a new listing!");
-  res.redirect("/listings");
+    console.log("✅ File object:", JSON.stringify(req.file, null, 2));
+
+    let response = await geocodingClient
+      .forwardGeocode({
+        query: req.body.listing.location,
+        limit: 1,
+      })
+      .send();
+
+    const newListing = new Listing(req.body.listing);
+    newListing.owner = req.user._id;
+    // CloudinaryStorage returns path and filename
+    let url = req.file.path || req.file.secure_url;
+    let filename = req.file.filename || req.file.public_id;
+    console.log("✅ URL:", url);
+    console.log("✅ Filename:", filename);
+    newListing.image = { url, filename };
+    newListing.geometry = response.body.features[0].geometry;
+    await newListing.save();
+    console.log("✅ Listing created with image:", newListing.image);
+    req.flash("success", "Successfully created a new listing!");
+    res.redirect("/listings");
+  } catch (error) {
+    console.error("❌ Error creating listing:", error);
+    req.flash("error", "Failed to create listing: " + error.message);
+    res.redirect("/listings/new");
+  }
 };
 
 module.exports.renderEditForm = async (req, res) => {
@@ -95,11 +113,13 @@ module.exports.renderEditForm = async (req, res) => {
     req.flash("error", "Listing you requested doesn't exist!");
     return res.redirect("/listings");
   }
-  let originalImageUrl = listing.image.url;
-  originalImageUrl = originalImageUrl.replace(
-    "upload",
-    "upload/ar_1.0,c_fill,h_200,w_200/bo_5px_solid_lightblue"
-  );
+  let originalImageUrl = "";
+  if (listing.image && listing.image.url) {
+    originalImageUrl = listing.image.url.replace(
+      "upload",
+      "upload/ar_1.0,c_fill,h_200,w_200/bo_5px_solid_lightblue"
+    );
+  }
   res.render("listings/edit.ejs", { listing, originalImageUrl });
 };
 
