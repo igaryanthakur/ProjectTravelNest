@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listings.js");
+const User = require("../models/user.js");
 require("dotenv").config();
 const { geocodingClient } = require("../cloudConfig");
 
@@ -20,6 +21,21 @@ async function main() {
 
 const initDB = async () => {
   await Listing.deleteMany({});
+
+  // Create or fetch admin user
+  let adminUser = await User.findOne({ email: "admin@travelnest.com" });
+  
+  if (!adminUser) {
+    adminUser = new User({
+      email: "admin@travelnest.com",
+      username: "admin",
+    });
+    const registeredUser = await User.register(adminUser, "admin");
+    console.log("✅ Admin user created");
+  } else {
+    console.log("✅ Using existing admin user");
+  }
+
   for (let obj of initData.data) {
     try {
       let response = await geocodingClient
@@ -28,13 +44,14 @@ const initDB = async () => {
           limit: 1,
         })
         .send();
-      const geometry = response.body.features[0]?.geometry || {
+      
+      const coordinates = response.body.features[0]?.geometry?.coordinates || [0, 0];
+      obj.geometry = {
         type: "Point",
-        coordinates: [0, 0],
+        coordinates: coordinates,
       };
 
-      obj.owner = process.env.ADMIN || "67cef00492794922b75b05f2";
-      obj.geometry = geometry;
+      obj.owner = adminUser._id;
     } catch (err) {
       console.error(
         `❌ Error geocoding location ${obj.location}:`,
@@ -44,6 +61,7 @@ const initDB = async () => {
         type: "Point",
         coordinates: [0, 0],
       };
+      obj.owner = adminUser._id;
     }
   }
   await Listing.insertMany(initData.data);
