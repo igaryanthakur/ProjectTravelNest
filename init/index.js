@@ -24,7 +24,7 @@ const initDB = async () => {
 
   // Create or fetch admin user
   let adminUser = await User.findOne({ email: "admin@travelnest.com" });
-  
+
   if (!adminUser) {
     adminUser = new User({
       email: "admin@travelnest.com",
@@ -44,8 +44,10 @@ const initDB = async () => {
           limit: 1,
         })
         .send();
-      
-      const coordinates = response.body.features[0]?.geometry?.coordinates || [0, 0];
+
+      const coordinates = response.body.features[0]?.geometry?.coordinates || [
+        0, 0,
+      ];
       obj.geometry = {
         type: "Point",
         coordinates: coordinates,
