@@ -17,7 +17,7 @@ router
     isLoggedIn,
     upload.single("listing[image]"),
     validateListing,
-    wrapAsync(listingController.createListing)
+    wrapAsync(listingController.createListing),
   );
 
 // Search Route
@@ -32,6 +32,13 @@ router.get("/filter-price/:price", wrapAsync(listingController.filterByPrice));
 // New Route
 router.route("/new").get(isLoggedIn, listingController.renderNewForm);
 
+// Owner Panel Route
+router.get(
+  "/owner/panel",
+  isLoggedIn,
+  wrapAsync(listingController.renderOwnerPanel),
+);
+
 // Show Route
 router
   .route("/:id")
@@ -41,7 +48,7 @@ router
     isOwner,
     upload.single("listing[image]"),
     validateListing,
-    wrapAsync(listingController.updateListing)
+    wrapAsync(listingController.updateListing),
   )
   .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
 
@@ -50,7 +57,7 @@ router.get(
   "/:id/edit",
   isLoggedIn,
   isOwner,
-  wrapAsync(listingController.renderEditForm)
+  wrapAsync(listingController.renderEditForm),
 );
 
 module.exports = router;

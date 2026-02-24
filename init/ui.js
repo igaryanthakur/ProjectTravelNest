@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
 const mongoose = require("mongoose");
-require("dotenv").config();
+require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 const { cloudinary } = require("../cloudConfig");
 const Listing = require("../models/listings");
 

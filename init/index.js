@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+const path = require("path");
 const initData = require("./data.js");
 const Listing = require("../models/listings.js");
 const User = require("../models/user.js");
-require("dotenv").config();
+require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 const { geocodingClient } = require("../cloudConfig");
 
 const Mongo_Url = "mongodb://localhost:27017/travelnest";

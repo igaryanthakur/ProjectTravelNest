@@ -1,4 +1,5 @@
 const Listing = require("../models/listings");
+const User = require("../models/user.js");
 require("dotenv").config();
 const { geocodingClient, cloudinary } = require("../cloudConfig");
 
@@ -9,6 +10,44 @@ module.exports.index = async (req, res) => {
 
 module.exports.renderNewForm = (req, res) => {
   res.render("listings/new.ejs");
+};
+
+module.exports.renderOwnerPanel = async (req, res) => {
+  const ownerId = req.user._id;
+  const listings = await Listing.find({ owner: ownerId }).populate({
+    path: "reviews",
+    populate: { path: "author" },
+  });
+
+  const ownerListingIds = new Set(
+    listings.map((listing) => listing._id.toString()),
+  );
+
+  const usersWithBookings = await User.find({
+    bookings: { $exists: true, $ne: [] },
+  }).populate({ path: "bookings", populate: { path: "listing" } });
+
+  const bookingsByListing = {};
+
+  for (const user of usersWithBookings) {
+    for (const booking of user.bookings) {
+      if (!booking || !booking.listing) continue;
+      const listingId = booking.listing._id?.toString();
+      if (!listingId || !ownerListingIds.has(listingId)) continue;
+
+      if (!bookingsByListing[listingId]) {
+        bookingsByListing[listingId] = [];
+      }
+
+      bookingsByListing[listingId].push({
+        user,
+        booking,
+        listing: booking.listing,
+      });
+    }
+  }
+
+  res.render("listings/owner-panel.ejs", { listings, bookingsByListing });
 };
 
 module.exports.showListing = async (req, res) => {
