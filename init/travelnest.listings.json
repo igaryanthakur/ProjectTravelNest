@@ -1,0 +1,837 @@
+[{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ac7"
+  },
+  "title": "Cozy Beachfront Cottage",
+  "description": "Escape to this charming beachfront cottage for a relaxing getaway. Enjoy stunning ocean views and easy access to the beach.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771901985/travelnest/x547qxs87yryzntu7kek.jpg",
+    "filename": "travelnest/x547qxs87yryzntu7kek"
+  },
+  "price": 1500,
+  "location": "Malibu",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -118.68561,
+      34.03688
+    ]
+  },
+  "category": "Beach-Front",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ac8"
+  },
+  "title": "Modern Loft in Downtown",
+  "description": "Stay in the heart of the city in this stylish loft apartment. Perfect for urban explorers!",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771901986/travelnest/ovlals5unwcw5ee4yi2z.jpg",
+    "filename": "travelnest/ovlals5unwcw5ee4yi2z"
+  },
+  "price": 1200,
+  "location": "New York City",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -74.005994,
+      40.712749
+    ]
+  },
+  "category": "Hill-Station",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ac9"
+  },
+  "title": "Mountain Retreat",
+  "description": "Unplug and unwind in this peaceful mountain cabin. Surrounded by nature, it's a perfect place to recharge.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771901987/travelnest/xaynb8msthx6mj9wryzb.jpg",
+    "filename": "travelnest/xaynb8msthx6mj9wryzb"
+  },
+  "price": 1000,
+  "location": "Aspen",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -106.819217,
+      39.190681
+    ]
+  },
+  "category": "Amazing-Pool",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442aca"
+  },
+  "title": "Historic Villa in Tuscany",
+  "description": "Experience the charm of Tuscany in this beautifully restored villa. Explore the rolling hills and vineyards.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771901988/travelnest/gkwvsinw08jy0s9y1t8y.jpg",
+    "filename": "travelnest/gkwvsinw08jy0s9y1t8y"
+  },
+  "price": 2500,
+  "location": "Florence",
+  "country": "Italy",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      11.256129,
+      43.771484
+    ]
+  },
+  "category": "Mansion",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442acb"
+  },
+  "title": "Secluded Treehouse Getaway",
+  "description": "Live among the treetops in this unique treehouse retreat. A true nature lover's paradise.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771901990/travelnest/ipkdhmdhoucacim2f7z0.jpg",
+    "filename": "travelnest/ipkdhmdhoucacim2f7z0"
+  },
+  "price": 800,
+  "location": "Portland",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -122.678367,
+      45.515197
+    ]
+  },
+  "category": "Single-Room",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442acc"
+  },
+  "title": "Beachfront Paradise",
+  "description": "Step out of your door onto the sandy beach. This beachfront condo offers the ultimate relaxation.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771901991/travelnest/jzyfh0qr46rmgjqwjuou.jpg",
+    "filename": "travelnest/jzyfh0qr46rmgjqwjuou"
+  },
+  "price": 2000,
+  "location": "Cancun",
+  "country": "Mexico",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -86.85176,
+      21.16188
+    ]
+  },
+  "category": "Beach-Front",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442acd"
+  },
+  "title": "Rustic Cabin by the Lake",
+  "description": "Spend your days fishing and kayaking on the serene lake. This cozy cabin is perfect for outdoor enthusiasts.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771901993/travelnest/vzbioycxcgm5bwwihucq.jpg",
+    "filename": "travelnest/vzbioycxcgm5bwwihucq"
+  },
+  "price": 900,
+  "location": "Lake Tahoe",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      153.488555,
+      -28.218236
+    ]
+  },
+  "category": "Hill-Station",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ace"
+  },
+  "title": "Luxury Penthouse with City Views",
+  "description": "Indulge in luxury living with panoramic city views from this stunning penthouse apartment.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771901995/travelnest/n9x7zmai0gtzmpmiepcj.jpg",
+    "filename": "travelnest/n9x7zmai0gtzmpmiepcj"
+  },
+  "price": 3500,
+  "location": "Los Angeles",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -118.254187,
+      34.048051
+    ]
+  },
+  "category": "Beach-Front",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442acf"
+  },
+  "title": "Ski-In/Ski-Out Chalet",
+  "description": "Hit the slopes right from your doorstep in this ski-in/ski-out chalet in the Swiss Alps.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771901996/travelnest/tkzephvaulabjebwy5pd.jpg",
+    "filename": "travelnest/tkzephvaulabjebwy5pd"
+  },
+  "price": 3000,
+  "location": "Verbier",
+  "country": "Switzerland",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      7.229043,
+      46.096066
+    ]
+  },
+  "category": "Boat-House",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ad0"
+  },
+  "title": "Safari Lodge in the Serengeti",
+  "description": "Experience the thrill of the wild in a comfortable safari lodge. Witness the Great Migration up close.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771901997/travelnest/aqosvp2itk7qpevxnvso.jpg",
+    "filename": "travelnest/aqosvp2itk7qpevxnvso"
+  },
+  "price": 4000,
+  "location": "Serengeti National Park",
+  "country": "Tanzania",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -94.695003,
+      39.200796
+    ]
+  },
+  "category": "Hill-Station",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ad1"
+  },
+  "title": "Historic Canal House",
+  "description": "Stay in a piece of history in this beautifully preserved canal house in Amsterdam's iconic district.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771901999/travelnest/vuo7ucv7ei9lgkvq9ydk.jpg",
+    "filename": "travelnest/vuo7ucv7ei9lgkvq9ydk"
+  },
+  "price": 1800,
+  "location": "Amsterdam",
+  "country": "Netherlands",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      4.9,
+      52.378
+    ]
+  },
+  "category": "Camping",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ad2"
+  },
+  "title": "Private Island Retreat",
+  "description": "Have an entire island to yourself for a truly exclusive and unforgettable vacation experience.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902000/travelnest/g3jqkamvpk1frzxrat6h.jpg",
+    "filename": "travelnest/g3jqkamvpk1frzxrat6h"
+  },
+  "price": 10000,
+  "location": "Fiji",
+  "country": "Fiji",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      178.4406,
+      -18.1456
+    ]
+  },
+  "category": "Mansion",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ad3"
+  },
+  "title": "Charming Cottage in the Cotswolds",
+  "description": "Escape to the picturesque Cotswolds in this quaint and charming cottage with a thatched roof.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902001/travelnest/i3jo6xuxpntnzvfqkz9m.jpg",
+    "filename": "travelnest/i3jo6xuxpntnzvfqkz9m"
+  },
+  "price": 1200,
+  "location": "Cotswolds",
+  "country": "United Kingdom",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      151.409075,
+      -33.437153
+    ]
+  },
+  "category": "Beach-Front",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ad4"
+  },
+  "title": "Historic Brownstone in Boston",
+  "description": "Step back in time in this elegant historic brownstone located in the heart of Boston.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902002/travelnest/dz9hfr8oqktuyk810wts.jpg",
+    "filename": "travelnest/dz9hfr8oqktuyk810wts"
+  },
+  "price": 2200,
+  "location": "Boston",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -71.056804,
+      42.35888
+    ]
+  },
+  "category": "OMG!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ad5"
+  },
+  "title": "Beachfront Bungalow in Bali",
+  "description": "Relax on the sandy shores of Bali in this beautiful beachfront bungalow with a private pool.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902003/travelnest/xut8yvmwwdrcjypaxwm2.jpg",
+    "filename": "travelnest/xut8yvmwwdrcjypaxwm2"
+  },
+  "price": 1800,
+  "location": "Bali",
+  "country": "Indonesia",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      115.219118,
+      -8.652497
+    ]
+  },
+  "category": "Camping",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ad6"
+  },
+  "title": "Mountain View Cabin in Banff",
+  "description": "Enjoy breathtaking mountain views from this cozy cabin in the Canadian Rockies.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902005/travelnest/uoy862flquvhmlidut9s.jpg",
+    "filename": "travelnest/uoy862flquvhmlidut9s"
+  },
+  "price": 1500,
+  "location": "Banff",
+  "country": "Canada",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -115.57096,
+      51.176613
+    ]
+  },
+  "category": "Single-Room",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ad7"
+  },
+  "title": "Art Deco Apartment in Miami",
+  "description": "Step into the glamour of the 1920s in this stylish Art Deco apartment in South Beach.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902007/travelnest/p4ucq6ygod30dsjmb7gk.jpg",
+    "filename": "travelnest/p4ucq6ygod30dsjmb7gk"
+  },
+  "price": 1600,
+  "location": "Miami",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -80.1919,
+      25.773357
+    ]
+  },
+  "category": "Artic",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ad8"
+  },
+  "title": "Tropical Villa in Phuket",
+  "description": "Escape to a tropical paradise in this luxurious villa with a private infinity pool in Phuket.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902008/travelnest/ztjqbrevgaomwmpursim.jpg",
+    "filename": "travelnest/ztjqbrevgaomwmpursim"
+  },
+  "price": 3000,
+  "location": "Phuket",
+  "country": "Thailand",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      98.38732,
+      7.88346
+    ]
+  },
+  "category": "Hill-Station",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ad9"
+  },
+  "title": "Historic Castle in Scotland",
+  "description": "Live like royalty in this historic castle in the Scottish Highlands. Explore the rugged beauty of the area.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902009/travelnest/jlyamdjmkheqvcikuzse.jpg",
+    "filename": "travelnest/jlyamdjmkheqvcikuzse"
+  },
+  "price": 4000,
+  "location": "Scottish Highlands",
+  "country": "United Kingdom",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -86.58756,
+      36.32677
+    ]
+  },
+  "category": "OMG!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ada"
+  },
+  "title": "Desert Oasis in Dubai",
+  "description": "Experience luxury in the middle of the desert in this opulent oasis in Dubai with a private pool.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902010/travelnest/wcxq4enzjatwunhmsub8.jpg",
+    "filename": "travelnest/wcxq4enzjatwunhmsub8"
+  },
+  "price": 5000,
+  "location": "Dubai",
+  "country": "United Arab Emirates",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      55.297558,
+      25.25809
+    ]
+  },
+  "category": "Iconic-City",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442adb"
+  },
+  "title": "Rustic Log Cabin in Montana",
+  "description": "Unplug and unwind in this cozy log cabin surrounded by the natural beauty of Montana.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902012/travelnest/ntioctdzrgunfegxj4x4.jpg",
+    "filename": "travelnest/ntioctdzrgunfegxj4x4"
+  },
+  "price": 1100,
+  "location": "Montana",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -109.172599,
+      47.072515
+    ]
+  },
+  "category": "Single-Room",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442adc"
+  },
+  "title": "Beachfront Villa in Greece",
+  "description": "Enjoy the crystal-clear waters of the Mediterranean in this beautiful beachfront villa on a Greek island.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902013/travelnest/dcuamvz5mngt26mrs8mf.jpg",
+    "filename": "travelnest/dcuamvz5mngt26mrs8mf"
+  },
+  "price": 2500,
+  "location": "Mykonos",
+  "country": "Greece",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      25.326384,
+      37.446503
+    ]
+  },
+  "category": "Mansion",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442add"
+  },
+  "title": "Eco-Friendly Treehouse Retreat",
+  "description": "Stay in an eco-friendly treehouse nestled in the forest. It's the perfect escape for nature lovers.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902014/travelnest/aoifppwijzahdozujizv.jpg",
+    "filename": "travelnest/aoifppwijzahdozujizv"
+  },
+  "price": 750,
+  "location": "Costa Rica",
+  "country": "Costa Rica",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -84.200915,
+      10.257794
+    ]
+  },
+  "category": "Single-Room",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ade"
+  },
+  "title": "Historic Cottage in Charleston",
+  "description": "Experience the charm of historic Charleston in this beautifully restored cottage with a private garden.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902016/travelnest/gmpsxqcomg4ulmbchxx3.jpg",
+    "filename": "travelnest/gmpsxqcomg4ulmbchxx3"
+  },
+  "price": 1600,
+  "location": "Charleston",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -79.938628,
+      32.789284
+    ]
+  },
+  "category": "Hill-Station",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442adf"
+  },
+  "title": "Modern Apartment in Tokyo",
+  "description": "Explore the vibrant city of Tokyo from this modern and centrally located apartment.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902017/travelnest/skacdhffqwzdk7xtjwk0.jpg",
+    "filename": "travelnest/skacdhffqwzdk7xtjwk0"
+  },
+  "price": 2000,
+  "location": "Tokyo",
+  "country": "Japan",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      139.692526,
+      35.68882
+    ]
+  },
+  "category": "Hill-Station",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ae0"
+  },
+  "title": "Lakefront Cabin in New Hampshire",
+  "description": "Spend your days by the lake in this cozy cabin in the scenic White Mountains of New Hampshire.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902018/travelnest/us2lx3zdl61ibqoru4uv.jpg",
+    "filename": "travelnest/us2lx3zdl61ibqoru4uv"
+  },
+  "price": 1200,
+  "location": "New Hampshire",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -71.578305,
+      43.689888
+    ]
+  },
+  "category": "Camping",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ae1"
+  },
+  "title": "Luxury Villa in the Maldives",
+  "description": "Indulge in luxury in this overwater villa in the Maldives with stunning views of the Indian Ocean.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902020/travelnest/nbsc72zlv3ug9no710dk.jpg",
+    "filename": "travelnest/nbsc72zlv3ug9no710dk"
+  },
+  "price": 6000,
+  "location": "Maldives",
+  "country": "Maldives",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      73.511049,
+      4.178874
+    ]
+  },
+  "category": "OMG!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ae2"
+  },
+  "title": "Ski Chalet in Aspen",
+  "description": "Hit the slopes in style with this luxurious ski chalet in the world-famous Aspen ski resort.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902021/travelnest/eihqj6mgwarcqdkf0utw.jpg",
+    "filename": "travelnest/eihqj6mgwarcqdkf0utw"
+  },
+  "price": 4000,
+  "location": "Aspen",
+  "country": "United States",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -106.819217,
+      39.190681
+    ]
+  },
+  "category": "Boat-House",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ae3"
+  },
+  "title": "Secluded Beach House in Costa Rica",
+  "description": "Escape to a secluded beach house on the Pacific coast of Costa Rica. Surf, relax, and unwind.",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902022/travelnest/quityk6ntzw8zx49fgjd.jpg",
+    "filename": "travelnest/quityk6ntzw8zx49fgjd"
+  },
+  "price": 1800,
+  "location": "Costa Rica",
+  "country": "Costa Rica",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      -84.200915,
+      10.257794
+    ]
+  },
+  "category": "Beach-Front",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ae4"
+  },
+  "title": "Snow Mansion",
+  "description": "Snow Homes features a balcony and is situated in Shimla, within just 6…",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902024/travelnest/dksfrr0d7ryoh700cs3b.jpg",
+    "filename": "travelnest/dksfrr0d7ryoh700cs3b"
+  },
+  "price": 5000,
+  "location": "Shimla",
+  "country": "India",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      77.172676,
+      31.10511
+    ]
+  },
+  "category": "Artic",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "699d13d7c289f3a909442ae5"
+  },
+  "title": "HoneyMoon Mansion",
+  "description": "Experience luxury living with this stunning estate featuring a mesmeri…",
+  "image": {
+    "url": "https://res.cloudinary.com/des0a45hb/image/upload/v1771902026/travelnest/j0yllc2z1hch3vtxiwso.jpg",
+    "filename": "travelnest/j0yllc2z1hch3vtxiwso"
+  },
+  "price": 9000,
+  "location": "Monaco City",
+  "country": "Monaco",
+  "reviews": [],
+  "owner": {
+    "$oid": "699d13d0c289f3a909442ac3"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      7.420765,
+      43.73171
+    ]
+  },
+  "category": "Amazing-Pool",
+  "__v": 0
+}]

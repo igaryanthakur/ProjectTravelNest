@@ -6,7 +6,7 @@ const User = require("../models/user.js");
 require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 const { geocodingClient } = require("../cloudConfig");
 
-const Mongo_Url = "mongodb://localhost:27017/travelnest";
+const Mongo_Url = process.env.ATLASDB_URL;
 
 main()
   .then(() => {
