@@ -60,7 +60,19 @@ Default seeded admin credentials:
 - username: `admin`
 - password: `admin`
 
-### 5) Start the app
+### 5) (Optional) Migrate listing images to Cloudinary
+
+```bash
+npm run ui
+```
+
+You can also use:
+
+```bash
+npm run migrate:images
+```
+
+### 6) Start the app
 
 Production mode:
 
@@ -82,6 +94,8 @@ Open:
 - `npm start` - start server
 - `npm run dev` - run server with nodemon
 - `npm run seed` - initialize database with sample listings
+- `npm run ui` - run `init/ui.js` image migration utility
+- `npm run migrate:images` - alias of `npm run ui`
 
 ## Common Issues
 

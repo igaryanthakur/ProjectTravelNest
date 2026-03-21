@@ -9,6 +9,8 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "seed": "node init/index.js",
+    "ui": "node init/ui.js",
+    "migrate:images": "node init/ui.js",
     "test": "echo \"No automated tests configured yet\""
   },
   "keywords": [],
