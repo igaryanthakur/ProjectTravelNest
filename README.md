@@ -2,7 +2,8 @@
 
 TravelNest is a Node.js + Express travel listing platform with authentication, image upload, map integration, reviews, and bookings.
 
-Live deployment: [https://travelnest-vgaj.onrender.com/listings](https://travelnest-vgaj.onrender.com/listings)
+Live deployment: 1. [https://travel-nest.live/](https://travel-nest.live/)
+2. [https://travelnest-vgaj.onrender.com/listings](https://travelnest-vgaj.onrender.com/listings)
 
 ## Tech Stack
 
